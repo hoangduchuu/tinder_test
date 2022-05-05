@@ -1,6 +1,9 @@
+import 'dart:collection';
+
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/user_payload.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
+import 'package:m_tinder/route.dart';
 import '../../../domain/model/model.dart';
 import '../../forked/flutter_tindercard.dart';
 import '../../widgets/action_button.dart';
@@ -94,7 +97,7 @@ class HomeController extends GetxController {
             List<UserModel> temp = users.value;
             temp.addAll(value.users!);
             users.value = temp;
-          }else{
+          } else {
             // show out of data here
           }
         });
@@ -121,5 +124,22 @@ class HomeController extends GetxController {
         break;
     }
   }
+
+  void goToDetailScreen(UserModel mUser) {
+    AppNavigator.openUserDetail(mUser)?.then((value) {
+      // handle on action button pressed
+      if (value == null || value['status'] == null) return;
+
+      String status = value['status'];
+
+      if (status.toString() == 'like') {
+        cardController.triggerRight();
+      }
+      if (status.toString() == 'ignore') {
+        cardController.triggerLeft();
+      }
+    });
+  }
 //endregion
+
 }

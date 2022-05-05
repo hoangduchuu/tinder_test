@@ -7,13 +7,13 @@ import '../screen/user_detail/user_bindings.dart';
 import '../screen/user_detail/user_detail_screen.dart';
 
 class ProfileCardWidget extends StatelessWidget {
-  const ProfileCardWidget({
-    Key? key,
-    required UserModel user,
-  })  : _user = user,
+  ProfileCardWidget({Key? key, required UserModel user, this.onInfoIconTap})
+      : _user = user,
         super(key: key);
 
   final UserModel _user;
+
+  Function? onInfoIconTap;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +121,9 @@ class ProfileCardWidget extends StatelessWidget {
                             width: context.width * 0.2,
                             child: InkWell(
                               onTap: () {
-                                AppNavigator.openUserDetail(_user);
+                                if (onInfoIconTap != null) {
+                                  onInfoIconTap!(_user);
+                                }
                               },
                               child: const Center(
                                 child: Icon(

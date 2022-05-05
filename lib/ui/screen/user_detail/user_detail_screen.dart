@@ -100,7 +100,7 @@ class UserDetailScreen extends GetView<UserController> {
               height: 60.0,
               iconSize: 30.0,
               background: Colors.white,
-              onTap: controller.dislike,
+              onTap: ()=>controller.dislike(user),
             ),
             const SizedBox(width: 20.0),
             ActionButton(
@@ -118,7 +118,7 @@ class UserDetailScreen extends GetView<UserController> {
               height: 60.0,
               iconSize: 30.0,
               background: Colors.white,
-              onTap: controller.like,
+              onTap: ()=> controller.like(user),
             )
           ],
         ),

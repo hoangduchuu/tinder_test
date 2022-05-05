@@ -33,7 +33,7 @@ class AppNavigator {
     Get.to(Routes.home);
   }
 
-  static void openUserDetail(UserModel userModel) {
-    Get.toNamed(Routes.userDetail, arguments: {'user': userModel});
+  static Future<dynamic>? openUserDetail(UserModel userModel) {
+    return Get.toNamed(Routes.userDetail, arguments: {'user': userModel});
   }
 }

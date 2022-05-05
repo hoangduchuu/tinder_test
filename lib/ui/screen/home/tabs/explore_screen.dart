@@ -28,7 +28,9 @@ class ExploreScreen extends StatelessWidget {
             cardController: _homeController.cardController,
             cardBuilder: (context, index) {
               var _user = _homeController.users[index];
-              return ProfileCardWidget(user: _user);
+              return ProfileCardWidget(user: _user,onInfoIconTap: (mUser){
+                _homeController.goToDetailScreen(mUser);
+              },);
             },
             // cardController: controller = CardController(),
             swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
