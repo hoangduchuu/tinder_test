@@ -7,7 +7,23 @@ class NopeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      child: Image.network('https://statics.voz.tech/styles/next/xenforo/smilies/popopo/sweat_x2.png?v=01'),
+      child: Transform.rotate(
+        angle: -100,
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border.all(color: Color(0xfffe3c72), width: 8.0, style: BorderStyle.solid), //Border.all
+            /*** The BorderRadius widget  is here ***/
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10),
+            ), //BorderRadius.all
+          ), //Box
+          child: const Text(
+            'NOPE',
+            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Color(0xfffe3c72)),
+          ),
+        ),
+      ),
       opacity: _getOpacity(align),
     );
   }

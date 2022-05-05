@@ -164,7 +164,7 @@ class ProfileCardWidget extends StatelessWidget {
                 visible: isFirstLayer && controller.cardHorizonAlignX < -1,
                 child: Positioned(
                   right: 24,
-                  top: 24,
+                  top: 30,
                   child: NopeWidget(align: controller.cardHorizonAlignX.value),
                 ),
               )

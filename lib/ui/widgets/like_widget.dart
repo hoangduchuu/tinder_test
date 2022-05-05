@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class LikeWidget extends StatelessWidget {
@@ -8,7 +9,23 @@ class LikeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      child: Image.network('https://statics.voz.tech/styles/next/xenforo/smilies/popopo/sweet_kiss_x2.png?v=01'),
+      child: Transform.rotate(
+        angle: 100,
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.green, width: 8.0, style: BorderStyle.solid), //Border.all
+            /*** The BorderRadius widget  is here ***/
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10),
+            ), //BorderRadius.all
+          ), //Box
+          child: const Text(
+            'LIKE',
+            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.green),
+          ),
+        ),
+      ),
       opacity: _getOpacity(align),
     );
   }
