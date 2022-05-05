@@ -43,24 +43,6 @@ class ProfileCardWidget extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: getMockAvatar('${_user.picture}').asMap().entries.map((entry) {
-                        return Flexible(
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 8.0,
-                              decoration: BoxDecoration(
-                                  color: ((isFirstLayer && _profileCardController.currentSliderPage == entry.key)
-                                      ? Colors.red
-                                      : Colors.green)),
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
                     Expanded(
                       child: CarouselSlider(
                         options: CarouselOptions(
@@ -70,9 +52,9 @@ class ProfileCardWidget extends StatelessWidget {
                           viewportFraction: 1,
                           pageSnapping: true,
                           onPageChanged: (index, reason) {
-                            _profileCardController.currentSliderPage.value = index;
+                            print(reason);
+                            _profileCardController.onPageChanged(index);
                           },
-
                         ),
                         carouselController: _profileCardController.carouselController,
                         items: getMockAvatar('${_user.picture}').map((i) {
@@ -94,6 +76,25 @@ class ProfileCardWidget extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: getMockAvatar('${_user.picture}').asMap().entries.map((entry) {
+                    return Flexible(
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 2, top: 6, right: 2),
+                          height: 8.0,
+                          decoration: BoxDecoration(
+                              color: ((isFirstLayer && _profileCardController.currentSliderPage == entry.key)
+                                  ? Colors.white
+                                  : Colors.grey)),
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
                 Container(
                   width: context.width,

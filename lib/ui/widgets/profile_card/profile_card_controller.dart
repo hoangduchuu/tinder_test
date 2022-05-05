@@ -7,7 +7,6 @@ class ProfileCardController extends GetxController {
 
   @override
   void onInit() {
-    print('init ocntrolllllerlelrelrelr');
     carouselController = CarouselController();
     super.onInit();
   }
@@ -29,5 +28,9 @@ class ProfileCardController extends GetxController {
   void resetIndicatorIndex() {
     currentSliderPage.value = 0;
     carouselController.jumpToPage(0);
+  }
+
+  void onPageChanged(int index) {
+    currentSliderPage.value = index;
   }
 }

@@ -176,7 +176,6 @@ class HomeController extends GetxController {
   void resetHorizonCardAlign() {
     cardHorizonAlignX.value = 0;
     cardVerticalAlignY.value = 0;
-    Get.find<ProfileCardController>().resetIndicatorIndex();
   }
 
 //endregion

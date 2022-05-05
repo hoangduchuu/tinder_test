@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/ui/forked/flutter_tindercard.dart';
+import 'package:m_tinder/ui/widgets/profile_card/profile_card_controller.dart';
 
 import '../../../widgets/action_button.dart';
 import '../../../widgets/profile_card/profile_card_widget.dart';
@@ -23,6 +24,7 @@ class ExploreScreen extends StatelessWidget {
             totalNum: _homeController.users.length,
             maxWidth: context.width,
             maxHeight: context.height * 0.8,
+            animDuration: 500,
             minWidth: context.width * 0.8,
             minHeight: context.height * 0.6,
             cardController: _homeController.cardController,
@@ -62,6 +64,7 @@ class ExploreScreen extends StatelessWidget {
               if (orientation == CardSwipeOrientation.up) {
                 _homeController.handleLikeAction();
               }
+              Get.find<ProfileCardController>().resetIndicatorIndex();
               _homeController.resetHorizonCardAlign();
             },
           ),
