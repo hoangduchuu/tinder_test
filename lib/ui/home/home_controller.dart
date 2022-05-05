@@ -2,11 +2,14 @@ import 'package:get/get.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
 
 import '../../domain/model/model.dart';
+import '../widgets/action_button.dart';
 
 class HomeController extends GetxController {
   final UserRepo _repo;
 
   HomeController(this._repo);
+
+  var selectedMenu = 0.obs;
 
   final users = <UserModel>[].obs;
 
@@ -22,13 +25,12 @@ class HomeController extends GetxController {
     // });
     //
 
-    _repo.getUserPayload(1).then((value){
-      if(value.users?.isNotEmpty == true){
+    _repo.getUserPayload(1).then((value) {
+      if (value.users?.isNotEmpty == true) {
         print('user: ${value.users.toString()}');
         users.value = value.users!;
-      }else{
+      } else {
         print('empty: ${value.users.toString()}');
-
       }
     });
 
@@ -41,6 +43,10 @@ class HomeController extends GetxController {
       print("DIS_LIKE: ${event.length}");
       print("DIS_LIKE: ${event}");
     });
+  }
+
+  void onMenuTap(int index) {
+    selectedMenu.value = index;
   }
 
   void like(UserModel item) {
