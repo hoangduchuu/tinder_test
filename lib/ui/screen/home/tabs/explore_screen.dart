@@ -28,13 +28,18 @@ class ExploreScreen extends StatelessWidget {
             cardController: _homeController.cardController,
             cardBuilder: (context, index) {
               var _user = _homeController.users[index];
-              return ProfileCardWidget(user: _user,onInfoIconTap: (mUser){
-                _homeController.goToDetailScreen(mUser);
-              },);
+              return ProfileCardWidget(
+                isFirstLayer: index == 0,
+                user: _user,
+                onInfoIconTap: (mUser) {
+                  _homeController.goToDetailScreen(mUser);
+                },
+              );
             },
             // cardController: controller = CardController(),
             swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
-              /// Get swiping card's alignment
+              /// Get swiping card's alignment_homeController.onAlignChange(align);
+              _homeController.onAlignChange(align);
               if (align.x < 0) {
                 // _homeController.like(item)
               } else if (align.x > 0) {
@@ -49,6 +54,7 @@ class ExploreScreen extends StatelessWidget {
               if (orientation == CardSwipeOrientation.left) {
                 _homeController.handleIgnoreAction();
               }
+              _homeController.resetHorizonCardAlign();
             },
           ),
           Positioned(

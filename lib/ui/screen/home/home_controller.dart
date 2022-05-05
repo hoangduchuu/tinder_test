@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:flutter/src/painting/alignment.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/user_payload.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
@@ -26,6 +27,8 @@ class HomeController extends GetxController {
   late UserPayload _userPayload;
 
   late CardController cardController;
+
+  final RxDouble cardHorizonAlignX = 0.0.obs;
 
   @override
   void onInit() {
@@ -133,17 +136,28 @@ class HomeController extends GetxController {
       String status = value['status'];
 
       if (status.toString() == 'like') {
-       Future.delayed(const Duration(milliseconds: 200),(){
-         cardController.triggerRight();
-       });
+        Future.delayed(const Duration(milliseconds: 200), () {
+          cardController.triggerRight();
+        });
       }
       if (status.toString() == 'ignore') {
-        Future.delayed(const Duration(milliseconds: 200),(){
+        Future.delayed(const Duration(milliseconds: 200), () {
           cardController.triggerLeft();
         });
       }
     });
   }
+
 //endregion
 
+//region handle card swiping
+  void onAlignChange(Alignment align) {
+    cardHorizonAlignX.value = align.x;
+  }
+
+  void resetHorizonCardAlign() {
+    cardHorizonAlignX.value = 0;
+  }
+
+//endregion
 }
