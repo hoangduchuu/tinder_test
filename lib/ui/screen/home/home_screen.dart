@@ -2,12 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:m_tinder/ui/home/home_controller.dart';
-import 'package:m_tinder/ui/home/tabs/explore_screen.dart';
-import 'package:m_tinder/ui/home/tabs/ignored_screen.dart';
-import 'package:m_tinder/ui/home/tabs/likes_screen.dart';
-import 'package:m_tinder/ui/home/utils.dart';
+import 'package:m_tinder/ui/screen/home/tabs/explore_screen.dart';
+import 'package:m_tinder/ui/screen/home/tabs/ignored_screen.dart';
+import 'package:m_tinder/ui/screen/home/tabs/likes_screen.dart';
+import 'package:m_tinder/ui/screen/home/utils.dart';
 import 'package:sqlite_viewer/sqlite_viewer.dart';
+
+import 'home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeController controller = Get.find<HomeController>();

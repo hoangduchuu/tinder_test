@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
-
-import '../../domain/model/model.dart';
-import '../widgets/action_button.dart';
+import '../../../domain/model/model.dart';
 
 class HomeController extends GetxController {
   final UserRepo _repo;
@@ -30,7 +28,6 @@ class HomeController extends GetxController {
     });
 
     _repo.getLikedUsers().listen((value) {
-      print('values -- ${value.length}');
       if (value.isNotEmpty == true) {
         likedUsers.value = value;
       }

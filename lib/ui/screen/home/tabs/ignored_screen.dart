@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:m_tinder/ui/home/home_controller.dart';
-
-import '../../widgets/card.dart';
+import '../../../widgets/card.dart';
+import '../home_controller.dart';
 
 class IgnoredScreen extends GetView<HomeController> {
   const IgnoredScreen({Key? key}) : super(key: key);

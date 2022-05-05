@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:m_tinder/ui/home/home_controller.dart';
 
-import '../../widgets/card.dart';
+import '../../../widgets/card.dart';
+import '../home_controller.dart';
 
 class LikesScreen extends GetView<HomeController> {
   const LikesScreen({Key? key}) : super(key: key);

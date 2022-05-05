@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
 import 'package:m_tinder/main.dart';
 import 'package:m_tinder/main_binding.dart';
-import 'package:m_tinder/ui/home/home_binding.dart';
-import 'package:m_tinder/ui/home/home_screen.dart';
+import 'package:m_tinder/ui/screen/home/home_binding.dart';
+import 'package:m_tinder/ui/screen/home/home_screen.dart';
 
 final routes = [
-  GetPage(name: Routes.home, page: () =>  HomeScreen(), bindings: [HomeBinding(), MainBinding()]),
-  GetPage(name: Routes.init, page: () => const MyHomePage(title: 'title'),),
+  GetPage(name: Routes.home, page: () => HomeScreen(), bindings: [HomeBinding(), MainBinding()]),
+  GetPage(
+    name: Routes.init,
+    page: () => const MyHomePage(title: 'title'),
+  ),
 ];
 
 class Routes {
