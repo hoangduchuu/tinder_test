@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/user_payload.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
 import '../../../domain/model/model.dart';
+import '../../forked/flutter_tindercard.dart';
+import '../../widgets/action_button.dart';
 
 class HomeController extends GetxController {
   final UserRepo _repo;
@@ -20,11 +22,19 @@ class HomeController extends GetxController {
 
   late UserPayload _userPayload;
 
+  late CardController cardController;
+
   @override
   void onInit() {
+    initControllers();
     initData();
   }
 
+  void initControllers() {
+    cardController = CardController();
+  }
+
+  //region working with data
   void initData() {
     _repo.getUserPayload(currentPage).then((value) {
       _userPayload = value;
@@ -91,4 +101,25 @@ class HomeController extends GetxController {
       }
     }
   }
+
+  //endregion
+
+  //region handle bottom card button actions
+  Future<void> handleOnTap(Map<String, dynamic> item) async {
+    switch (item['type'] as ActionButtonType) {
+      case ActionButtonType.back:
+        break;
+      case ActionButtonType.dislike:
+        cardController.triggerLeft();
+        break;
+      case ActionButtonType.superLike:
+        break;
+      case ActionButtonType.like:
+        cardController.triggerRight();
+        break;
+      case ActionButtonType.speedUp:
+        break;
+    }
+  }
+//endregion
 }

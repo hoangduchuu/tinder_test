@@ -25,6 +25,7 @@ class ExploreScreen extends StatelessWidget {
             maxHeight: context.height * 0.8,
             minWidth: context.width * 0.8,
             minHeight: context.height * 0.6,
+            cardController: _homeController.cardController,
             cardBuilder: (context, index) {
               var _user = _homeController.users[index];
               return ProfileCardWidget(user: _user);
@@ -63,7 +64,7 @@ class ExploreScreen extends StatelessWidget {
                           height: item['height'],
                           iconSize: item['iconSize'],
                           onTap: () {
-                            //
+                            _homeController.handleOnTap(item);
                           },
                         ))
                     .toList(),
