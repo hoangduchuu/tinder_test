@@ -49,11 +49,23 @@ class HomeController extends GetxController {
     selectedMenu.value = index;
   }
 
-  void like(UserModel item) {
+  void _like(UserModel item) {
     _repo.like(item);
   }
 
-  void ignore(UserModel item) {
+  void _ignore(UserModel item) {
     _repo.ignore(item);
+  }
+
+  /// write to local db then mo to next user
+  void handleLikeAction() {
+    _like(users.first);
+    users.removeAt(0);
+  }
+
+  /// write to local db then mo to next user
+  void handleIgnoreAction() {
+    _ignore(users.first);
+    users.removeAt(0);
   }
 }
