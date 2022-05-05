@@ -1,7 +1,8 @@
 import 'package:m_tinder/data/repository/local/db/app_database.dart';
 import 'package:m_tinder/data/util/base_mapper.dart';
-import 'package:m_tinder/model/model.dart';
 import 'package:moor_flutter/moor_flutter.dart';
+
+import '../../../../../domain/model/model.dart';
 
 class UserTable extends Table {
   TextColumn get id => text().withLength(min: 1, max: 50).nullable()();

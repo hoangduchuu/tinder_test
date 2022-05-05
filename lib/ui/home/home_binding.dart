@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:m_tinder/data/repository/user_repo_impl.dart';
-import 'package:m_tinder/domain/user_repo.dart';
+import 'package:m_tinder/data/repository/repo/user_repo_impl.dart';
+import 'package:m_tinder/domain/repo/user_repo.dart';
 
 import '../../data/repository/local/repo/user_local_data_source.dart';
 import '../../data/repository/remote/user_remote_data_source.dart';

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:m_tinder/data/repository/user_repo_impl.dart';
+import 'package:m_tinder/data/repository/repo/user_repo_impl.dart';
 // import 'package:isar/isar.dart';
 import 'package:m_tinder/route.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'data/repository/local/db/table/user_table.dart';
-import 'domain/user_repo.dart';
+import 'domain/repo/user_repo.dart';
 import 'main_binding.dart';
 
 void main() async {

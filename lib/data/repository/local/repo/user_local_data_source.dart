@@ -1,31 +1,30 @@
 import 'package:get/get.dart';
 import 'package:m_tinder/data/repository/local/db/app_database.dart';
 import 'package:m_tinder/data/repository/local/db/table/user_table.dart';
-import 'package:m_tinder/data/util/base_mapper.dart';
-import 'package:path_provider/path_provider.dart';
 
-import '../../../../model/model.dart';
+import '../../../../domain/model/model.dart';
+
 
 class UserCacheRepo {
-  AppDatabase _isar = Get.find<AppDatabase>();
+  AppDatabase _appDatabase = Get.find<AppDatabase>();
 
   Future<List<UserModel>> getUsers() {
     throw UnimplementedError();
   }
 
   Future<dynamic> like(UserModel userModel) async {
-    return _isar.userDao.like(userModel.toTable());
+    return _appDatabase.userDao.like(userModel.toTable());
   }
 
   Future<dynamic> ignore(UserModel userModel) async {
-    return _isar.userDao.like(userModel.toTable());
+    return _appDatabase.userDao.like(userModel.toTable());
   }
 
   Stream<List<UserModel>> getLiked() {
-    return _isar.userDao.allLiked().map((event) => UserTableMapper().mapToEntities(event));
+    return _appDatabase.userDao.allLiked().map((event) => UserTableMapper().mapToEntities(event));
   }
 
   Stream<List<UserModel>> getIgnored() {
-    return _isar.userDao.allIgnored().map((event) => UserTableMapper().mapToEntities(event));
+    return _appDatabase.userDao.allIgnored().map((event) => UserTableMapper().mapToEntities(event));
   }
 }

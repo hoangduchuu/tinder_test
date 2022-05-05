@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:m_tinder/domain/user_repo.dart';
-import 'package:m_tinder/model/model.dart';
+import 'package:m_tinder/domain/repo/user_repo.dart';
+
+import '../../domain/model/model.dart';
 
 class HomeController extends GetxController {
   final UserRepo _repo;

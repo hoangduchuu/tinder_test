@@ -1,4 +1,4 @@
-import 'package:m_tinder/model/model.dart';
+import '../model/model.dart';
 
 abstract class UserRepo {
   Future<List<UserModel>> getUsers();

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
-import '../../../model/model.dart';
+import '../../../domain/model/model.dart';
+
 
 class UserRemoteRepo {
   final Dio dio = Dio()..options.headers.addAll({'app-id': '6162b45dbca1e4470c339c6a'});

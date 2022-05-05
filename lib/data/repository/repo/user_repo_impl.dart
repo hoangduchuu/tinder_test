@@ -1,14 +1,14 @@
 import 'package:get/get.dart';
 import 'package:m_tinder/data/repository/remote/user_remote_data_source.dart';
-import 'package:m_tinder/domain/user_repo.dart';
-import 'package:m_tinder/model/model.dart';
+import 'package:m_tinder/domain/repo/user_repo.dart';
 
-import 'local/repo/user_local_data_source.dart';
+import '../../../domain/model/model.dart';
+import '../local/repo/user_local_data_source.dart';
 
 
 class UserRepositoryImpl implements UserRepo {
   final _remoteRepo = UserRemoteRepo();
-  UserCacheRepo _cacheRepo = Get.find<UserCacheRepo>();
+  final UserCacheRepo _cacheRepo = Get.find<UserCacheRepo>();
 
   @override
   Future<List<UserModel>> getUsers() {
