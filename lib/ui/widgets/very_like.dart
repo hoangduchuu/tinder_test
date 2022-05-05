@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class VeryLike extends StatelessWidget {
-  VeryLike({Key? key, required this.align}) : super(key: key);
+  const VeryLike({Key? key, required this.align}) : super(key: key);
   final double align;
 
   @override

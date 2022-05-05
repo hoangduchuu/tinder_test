@@ -21,13 +21,13 @@ class UserPayload {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    if (this.users != null) {
-      data['data'] = this.users!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (users != null) {
+      data['data'] = users!.map((v) => v.toJson()).toList();
     }
-    data['total'] = this.total;
-    data['page'] = this.page;
-    data['limit'] = this.limit;
+    data['total'] = total;
+    data['page'] = page;
+    data['limit'] = limit;
     return data;
   }
 }

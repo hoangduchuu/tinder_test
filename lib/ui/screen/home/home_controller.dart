@@ -1,6 +1,3 @@
-import 'dart:collection';
-
-import 'package:flutter/src/painting/alignment.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/user_payload.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
@@ -35,6 +32,7 @@ class HomeController extends GetxController {
   void onInit() {
     initControllers();
     initData();
+    super.onInit();
   }
 
   void initControllers() {
@@ -125,7 +123,7 @@ class HomeController extends GetxController {
         });
         break;
       case ActionButtonType.superLike:
-      // enable like-tag then trigger after that
+        // enable like-tag then trigger after that
         cardVerticalAlignY.value = -100;
         Future.delayed(const Duration(milliseconds: 500), () {
           cardController.triggerUp();
@@ -168,17 +166,15 @@ class HomeController extends GetxController {
 //endregion
 
 //region handle card swiping
-  void onAlignChange(Alignment align) {
-    cardHorizonAlignX.value = align.x;
-    cardVerticalAlignY.value = align.y;
+  void onAlignChange(double x, double y) {
+    cardHorizonAlignX.value = x;
+    cardVerticalAlignY.value = y;
   }
 
   void resetHorizonCardAlign() {
     cardHorizonAlignX.value = 0;
     cardVerticalAlignY.value = 0;
   }
-
-
 
 //endregion
 }

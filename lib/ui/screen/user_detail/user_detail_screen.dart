@@ -25,7 +25,10 @@ class UserDetailScreen extends GetView<UserController> {
                   children: [
                     buildImageWidget(context),
                     buildUserInfo(context),
-                    const SizedBox(width: 100,height: 100,)
+                    const SizedBox(
+                      width: 100,
+                      height: 100,
+                    )
                   ],
                 ),
               ),
@@ -100,7 +103,7 @@ class UserDetailScreen extends GetView<UserController> {
               height: 60.0,
               iconSize: 30.0,
               background: Colors.white,
-              onTap: ()=>controller.dislike(user),
+              onTap: () => controller.dislike(user),
             ),
             const SizedBox(width: 20.0),
             ActionButton(
@@ -118,7 +121,7 @@ class UserDetailScreen extends GetView<UserController> {
               height: 60.0,
               iconSize: 30.0,
               background: Colors.white,
-              onTap: ()=> controller.like(user),
+              onTap: () => controller.like(user),
             )
           ],
         ),
@@ -144,9 +147,9 @@ class UserDetailScreen extends GetView<UserController> {
               const SizedBox(
                 width: 10,
               ),
-              Text(
-                '25 tuoi',
-                style: const TextStyle(
+              const Text(
+                '25yrs',
+                style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
                 ),
@@ -181,11 +184,11 @@ class UserDetailScreen extends GetView<UserController> {
                   child: Container(
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.grey.withOpacity(0.5)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3, bottom: 3, left: 10, right: 10),
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 3, bottom: 3, left: 10, right: 10),
                       child: Text(
-                        "Mandirista",
-                        style: const TextStyle(color: Colors.black),
+                        'Mandirista',
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                   ),

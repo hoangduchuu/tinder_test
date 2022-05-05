@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NopeWidget extends StatelessWidget {
-  NopeWidget({Key? key, required this.align}) : super(key: key);
+  const NopeWidget({Key? key, required this.align}) : super(key: key);
   final double align;
 
   @override
@@ -12,7 +12,7 @@ class NopeWidget extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            border: Border.all(color: Color(0xfffe3c72), width: 8.0, style: BorderStyle.solid), //Border.all
+            border: Border.all(color: const Color(0xfffe3c72), width: 8.0, style: BorderStyle.solid), //Border.all
             /*** The BorderRadius widget  is here ***/
             borderRadius: const BorderRadius.all(
               Radius.circular(10),

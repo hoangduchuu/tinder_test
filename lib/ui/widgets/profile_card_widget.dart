@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/model.dart';
-import 'package:m_tinder/route.dart';
 import 'package:m_tinder/ui/widgets/like_widget.dart';
 import 'package:m_tinder/ui/widgets/nope_widget.dart';
 import 'package:m_tinder/ui/widgets/very_like.dart';
 
 import '../screen/home/home_controller.dart';
-import '../screen/user_detail/user_bindings.dart';
-import '../screen/user_detail/user_detail_screen.dart';
 
+@immutable
 class ProfileCardWidget extends StatelessWidget {
   ProfileCardWidget({Key? key, required UserModel user, required this.isFirstLayer, this.onInfoIconTap})
       : _user = user,
@@ -19,9 +17,9 @@ class ProfileCardWidget extends StatelessWidget {
 
   final bool isFirstLayer;
 
-  Function? onInfoIconTap;
+  final Function? onInfoIconTap;
 
-  HomeController controller = Get.find<HomeController>();
+  final HomeController controller = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +76,9 @@ class ProfileCardWidget extends StatelessWidget {
                                     const SizedBox(
                                       width: 10,
                                     ),
-                                    Text(
+                                    const Text(
                                       '19yrs',
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 22,
                                       ),
@@ -171,7 +169,7 @@ class ProfileCardWidget extends StatelessWidget {
               ),
               Visibility(
                 visible: isFirstLayer && controller.cardVerticalAlignY < -3,
-                child: Positioned(
+                child: const Positioned(
                   bottom: 24,
                   left: 10,
                   right: 10,
@@ -183,10 +181,5 @@ class ProfileCardWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  double _getOpacity(RxDouble cardHorizonAlignX) {
-    var abs = cardHorizonAlignX.abs() / 10;
-    return abs > 1 ? 1 : abs;
   }
 }

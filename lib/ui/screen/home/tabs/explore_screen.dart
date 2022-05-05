@@ -9,7 +9,7 @@ import '../utils.dart';
 
 class ExploreScreen extends StatelessWidget {
   ExploreScreen({Key? key}) : super(key: key);
-  HomeController _homeController = Get.find<HomeController>();
+  final HomeController _homeController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class ExploreScreen extends StatelessWidget {
             // cardController: controller = CardController(),
             swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
               /// Get swiping card's alignment_homeController.onAlignChange(align);
-              _homeController.onAlignChange(align);
+              _homeController.onAlignChange(align.x,align.y);
               if (align.x < 0) {
                 // _homeController.like(item)
               } else if (align.x > 0) {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class LikeWidget extends StatelessWidget {
-  LikeWidget({Key? key, required this.align}) : super(key: key);
+  const LikeWidget({Key? key, required this.align}) : super(key: key);
   final double align;
 
   @override

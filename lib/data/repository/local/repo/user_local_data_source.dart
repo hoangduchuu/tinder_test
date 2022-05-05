@@ -6,7 +6,7 @@ import '../../../../domain/model/model.dart';
 
 
 class UserCacheRepo {
-  AppDatabase _appDatabase = Get.find<AppDatabase>();
+  final AppDatabase _appDatabase = Get.find<AppDatabase>();
 
   Future<List<UserModel>> getUsers() {
     throw UnimplementedError();

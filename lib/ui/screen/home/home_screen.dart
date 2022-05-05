@@ -10,8 +10,11 @@ import 'package:sqlite_viewer/sqlite_viewer.dart';
 
 import 'home_controller.dart';
 
+@immutable
 class HomeScreen extends StatelessWidget {
-  HomeController controller = Get.find<HomeController>();
+  final HomeController controller = Get.find<HomeController>();
+
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       ' Tinder',
                       style: TextStyle(
-                          fontSize: 24, color: Color(0xfffe3c72).withOpacity(0.8), fontWeight: FontWeight.bold),
+                          fontSize: 24, color: const Color(0xfffe3c72).withOpacity(0.8), fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -111,14 +114,12 @@ class HomeScreen extends StatelessWidget {
       case 0:
         return ExploreScreen();
       case 1:
-        return LikesScreen();
+        return const LikesScreen();
       case 2:
-        return IgnoredScreen();
+        return const IgnoredScreen();
       default:
-        return Container(
-          child: const Center(
-            child: Text('Profile'),
-          ),
+        return const Center(
+          child: Text('Profile'),
         );
     }
   }

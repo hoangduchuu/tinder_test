@@ -52,7 +52,7 @@ class TinderSwapCard extends StatefulWidget {
   /// action(recover or swipe) when you release your swiping card it is the
   /// value of alignment, 0.0 means middle, so it need bigger than zero.
   /// and size control params;
-  TinderSwapCard({
+  TinderSwapCard({Key? key,
     required CardBuilder cardBuilder,
     required int totalNum,
     AmassOrientation orientation = AmassOrientation.bottom,
@@ -82,7 +82,7 @@ class TinderSwapCard extends StatefulWidget {
         _swipeEdgeVertical = swipeEdgeVertical,
         _swipeUp = swipeUp,
         _swipeDown = swipeDown,
-        _allowVerticalMovement = allowVerticalMovement {
+        _allowVerticalMovement = allowVerticalMovement, super(key: key) {
     final widthGap = maxWidth! - minWidth!;
     final heightGap = maxHeight! - minHeight!;
 

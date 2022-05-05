@@ -2,35 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:m_tinder/data/repository/repo/user_repo_impl.dart';
-// import 'package:isar/isar.dart';
 import 'package:m_tinder/route.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'data/repository/local/db/table/user_table.dart';
+
 import 'domain/repo/user_repo.dart';
 import 'main_binding.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // initializeIsarConnect();
-  // GlobalBindings().dependencies();
- await initDatabase();
-
-
   runApp(const MyApp());
-}
-
-Future<void> initDatabase() async {
-  // await Get.putAsync<Isar>(() async {
-  //   final dir = await getApplicationSupportDirectory();
-  //   var isar = await Isar.open(
-  //     schemas: [
-  //       UserDTOSchema,
-  //     ],
-  //     directory: dir.path,
-  //   );
-  //   return isar;
-  // }, permanent: true); // Y
 }
 
 class MyApp extends StatelessWidget {
@@ -64,9 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     UserRepo _repo = UserRepositoryImpl();
-    _repo.getUsers().then((value) {
-      print("dataa ne :${value.toString()}");
-    });
+    _repo.getUsers().then((value) {});
     setState(() {
       _counter++;
     });
