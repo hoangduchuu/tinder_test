@@ -48,8 +48,8 @@ var navigationItems = [
     'icon': 'assets/images/likes_icon.svg',
   },
   {
-    'activeIcon': 'assets/images/chat_active_icon.svg',
-    'icon': 'assets/images/chat_icon.svg',
+    'activeIcon': 'assets/images/ignored_active_icon.svg',
+    'icon': 'assets/images/ignored_icon.svg',
   },
   {
     'activeIcon': 'assets/images/account_active_icon.svg',
