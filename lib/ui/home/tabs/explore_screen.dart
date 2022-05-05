@@ -40,13 +40,12 @@ class ExploreScreen extends StatelessWidget {
             },
             swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
               /// Get orientation & index of swiped card!
-              if(orientation == CardSwipeOrientation.right){
+              if (orientation == CardSwipeOrientation.right) {
                 _homeController.handleLikeAction();
               }
-              if(orientation == CardSwipeOrientation.left){
+              if (orientation == CardSwipeOrientation.left) {
                 _homeController.handleIgnoreAction();
               }
-
             },
           ),
           Positioned(

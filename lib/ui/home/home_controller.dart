@@ -13,35 +13,33 @@ class HomeController extends GetxController {
 
   final users = <UserModel>[].obs;
 
+  final likedUsers = <UserModel>[].obs;
+
+  final ignoredUsers = <UserModel>[].obs;
+
   @override
   void onInit() {
-    test();
+    initData();
   }
 
-  void test() {
-    // _repo.getUsers().then((value) {
-    //   print("us: ${value.toString()}");
-    //   users.value = value;
-    // });
-    //
-
+  void initData() {
     _repo.getUserPayload(1).then((value) {
       if (value.users?.isNotEmpty == true) {
-        print('user: ${value.users.toString()}');
         users.value = value.users!;
-      } else {
-        print('empty: ${value.users.toString()}');
       }
     });
 
-    _repo.getLikedUsers().listen((event) {
-      print("LIKE: ${event.length}");
-      print("LIKE: ${event}");
+    _repo.getLikedUsers().listen((value) {
+      print('values -- ${value.length}');
+      if (value.isNotEmpty == true) {
+        likedUsers.value = value;
+      }
     });
 
-    _repo.getIgnoreUsers().listen((event) {
-      print("DIS_LIKE: ${event.length}");
-      print("DIS_LIKE: ${event}");
+    _repo.getIgnoreUsers().listen((value) {
+      if (value.isNotEmpty == true) {
+        ignoredUsers.value = value;
+      }
     });
   }
 

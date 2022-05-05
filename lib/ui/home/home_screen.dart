@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/ui/home/home_controller.dart';
 import 'package:m_tinder/ui/home/tabs/explore_screen.dart';
+import 'package:m_tinder/ui/home/tabs/ignored_screen.dart';
+import 'package:m_tinder/ui/home/tabs/likes_screen.dart';
 import 'package:m_tinder/ui/home/utils.dart';
 import 'package:sqlite_viewer/sqlite_viewer.dart';
 
@@ -41,7 +43,17 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (kDebugMode) Obx(() => Text('${controller.users.length}'))
+                Row(
+                  children: [
+                    SvgPicture.asset('assets/images/explore_active_icon.svg'),
+                    Text(
+                      ' Tinder',
+                      style: TextStyle(
+                          fontSize: 24, color: Color(0xfffe3c72).withOpacity(0.8), fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                kDebugMode ? Obx(() => Text('${controller.users.length}')) : Container()
               ],
             ),
           ),
@@ -87,17 +99,9 @@ class HomeScreen extends StatelessWidget {
       case 0:
         return ExploreScreen();
       case 1:
-        return Container(
-          child: const Center(
-            child: Text('Ignored'),
-          ),
-        );
+        return LikesScreen();
       case 2:
-        return Container(
-          child: const Center(
-            child: Text('Liked'),
-          ),
-        );
+        return IgnoredScreen();
       default:
         return Container(
           child: const Center(

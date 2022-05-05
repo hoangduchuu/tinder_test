@@ -32,11 +32,11 @@ class UserRepositoryImpl implements UserRepo {
 
   @override
   Stream<List<UserModel>> getIgnoreUsers() {
-    return _cacheRepo.getLiked();
+    return _cacheRepo.getIgnored();
   }
 
   @override
   Stream<List<UserModel>> getLikedUsers() {
-    return _cacheRepo.getIgnored();
+    return _cacheRepo.getLiked();
   }
 }
