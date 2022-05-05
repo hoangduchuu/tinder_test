@@ -27,12 +27,14 @@ class HomeController extends GetxController {
       }
     });
 
+    /// listen liked user list
     _repo.getLikedUsers().listen((value) {
       if (value.isNotEmpty == true) {
         likedUsers.value = value;
       }
     });
 
+    /// listen ignored user list
     _repo.getIgnoreUsers().listen((value) {
       if (value.isNotEmpty == true) {
         ignoredUsers.value = value;
