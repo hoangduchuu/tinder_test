@@ -16,9 +16,17 @@ class HomeController extends GetxController {
   }
 
   void test() {
-    _repo.getUsers().then((value) {
-      print("us: ${value.toString()}");
-      users.value = value;
+    // _repo.getUsers().then((value) {
+    //   print("us: ${value.toString()}");
+    //   users.value = value;
+    // });
+    //
+
+    _repo.getUserPayload(1).then((value){
+      if(value.users?.isNotEmpty == true){
+        print('user: ${value.users.toString()}');
+        users.value = value.users!;
+      }
     });
 
     _repo.getLikedUsers().listen((event) {
@@ -27,8 +35,8 @@ class HomeController extends GetxController {
     });
 
     _repo.getIgnoreUsers().listen((event) {
-      print("LIKE-NO: ${event.length}");
-      print("LIKE-NO:: ${event}");
+      print("DIS_LIKE: ${event.length}");
+      print("DIS_LIKE: ${event}");
     });
   }
 
