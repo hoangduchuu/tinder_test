@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/model.dart';
 import 'package:m_tinder/ui/screen/home/utils.dart';
@@ -52,7 +51,6 @@ class ProfileCardWidget extends StatelessWidget {
                           viewportFraction: 1,
                           pageSnapping: true,
                           onPageChanged: (index, reason) {
-                            print(reason);
                             _profileCardController.onPageChanged(index);
                           },
                         ),
@@ -88,6 +86,7 @@ class ProfileCardWidget extends StatelessWidget {
                           margin: const EdgeInsets.only(left: 2, top: 6, right: 2),
                           height: 8.0,
                           decoration: BoxDecoration(
+                              // ignore: unrelated_type_equality_checks
                               color: ((isFirstLayer && _profileCardController.currentSliderPage == entry.key)
                                   ? Colors.white
                                   : Colors.grey)),
@@ -242,6 +241,6 @@ class ProfileCardWidget extends StatelessWidget {
     if (i.startsWith('https')) {
       return NetworkImage(i);
     }
-    return AssetImage('$i');
+    return AssetImage(i);
   }
 }

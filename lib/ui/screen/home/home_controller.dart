@@ -1,9 +1,7 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/user_payload.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
 import 'package:m_tinder/route.dart';
-import 'package:m_tinder/ui/widgets/profile_card/profile_card_controller.dart';
 import '../../../domain/model/model.dart';
 import '../../forked/flutter_tindercard.dart';
 import '../../widgets/action_button.dart';
@@ -98,6 +96,7 @@ class HomeController extends GetxController {
         _repo.getUserPayload(currentPage).then((value) {
           _userPayload = value;
           if (value.users?.isNotEmpty == true) {
+            // ignore: invalid_use_of_protected_member
             List<UserModel> temp = users.value;
             temp.addAll(value.users!);
             users.value = temp;

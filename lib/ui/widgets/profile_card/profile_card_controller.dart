@@ -12,17 +12,13 @@ class ProfileCardController extends GetxController {
   }
 
   void onNext() {
-    if (carouselController != null) {
-      carouselController.nextPage();
-      currentSliderPage += 1;
-    }
+    carouselController.nextPage();
+    currentSliderPage += 1;
   }
 
   void onPrevious() {
-    if (carouselController != null) {
-      carouselController.nextPage();
-      currentSliderPage += 1;
-    }
+    carouselController.nextPage();
+    currentSliderPage += 1;
   }
 
   void resetIndicatorIndex() {
