@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                !kDebugMode
+                kDebugMode
                     ? Obx(
                         () => SizedBox(
                           height: 50,
