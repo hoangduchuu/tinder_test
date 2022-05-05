@@ -1,7 +1,9 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/user_payload.dart';
 import 'package:m_tinder/domain/repo/user_repo.dart';
 import 'package:m_tinder/route.dart';
+import 'package:m_tinder/ui/widgets/profile_card/profile_card_controller.dart';
 import '../../../domain/model/model.dart';
 import '../../forked/flutter_tindercard.dart';
 import '../../widgets/action_button.dart';
@@ -174,6 +176,7 @@ class HomeController extends GetxController {
   void resetHorizonCardAlign() {
     cardHorizonAlignX.value = 0;
     cardVerticalAlignY.value = 0;
+    Get.find<ProfileCardController>().resetIndicatorIndex();
   }
 
 //endregion

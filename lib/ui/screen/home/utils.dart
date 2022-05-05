@@ -56,3 +56,25 @@ var navigationItems = [
     'icon': 'assets/images/account_icon.svg',
   }
 ];
+
+List<String> getMockAvatar(String originPicture) {
+  return [
+    originPicture,
+    'assets/images/girls/img_1.jpeg',
+    'assets/images/girls/img_2.jpeg',
+    'assets/images/girls/img_3.jpeg',
+    'assets/images/girls/img_4.jpeg',
+    'assets/images/girls/img_5.jpeg',
+    'assets/images/girls/img_6.jpeg',
+    'assets/images/girls/img_7.jpeg',
+    'assets/images/girls/img_8.jpeg',
+    'assets/images/girls/img_9.jpeg',
+    'assets/images/girls/img_10.jpeg',
+    'assets/images/girls/img_11.jpeg',
+    'assets/images/girls/img_12.jpeg',
+    'assets/images/girls/img_13.jpeg',
+    'assets/images/girls/img_14.jpeg',
+    'assets/images/girls/img_15.jpeg',
+    'assets/images/girls/img_16.jpeg'
+  ];
+}

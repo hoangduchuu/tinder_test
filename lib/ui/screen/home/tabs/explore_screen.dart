@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:m_tinder/ui/forked/flutter_tindercard.dart';
 
 import '../../../widgets/action_button.dart';
-import '../../../widgets/profile_card_widget.dart';
+import '../../../widgets/profile_card/profile_card_widget.dart';
 import '../home_controller.dart';
 import '../utils.dart';
 
