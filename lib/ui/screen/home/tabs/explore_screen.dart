@@ -54,6 +54,14 @@ class ExploreScreen extends StatelessWidget {
               if (orientation == CardSwipeOrientation.left) {
                 _homeController.handleIgnoreAction();
               }
+
+              // FIXME: implement write action to own & up
+              if (orientation == CardSwipeOrientation.down) {
+                _homeController.handleLikeAction();
+              }
+              if (orientation == CardSwipeOrientation.up) {
+                _homeController.handleLikeAction();
+              }
               _homeController.resetHorizonCardAlign();
             },
           ),

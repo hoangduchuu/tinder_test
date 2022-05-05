@@ -4,6 +4,7 @@ import 'package:m_tinder/domain/model/model.dart';
 import 'package:m_tinder/route.dart';
 import 'package:m_tinder/ui/widgets/like_widget.dart';
 import 'package:m_tinder/ui/widgets/nope_widget.dart';
+import 'package:m_tinder/ui/widgets/very_like.dart';
 
 import '../screen/home/home_controller.dart';
 import '../screen/user_detail/user_bindings.dart';
@@ -167,7 +168,16 @@ class ProfileCardWidget extends StatelessWidget {
                   top: 30,
                   child: NopeWidget(align: controller.cardHorizonAlignX.value),
                 ),
-              )
+              ),
+              Visibility(
+                visible: isFirstLayer && controller.cardVerticalAlignY < -3,
+                child: Positioned(
+                  bottom: 24,
+                  left: 10,
+                  right: 10,
+                  child: VeryLike(align: 111),
+                ),
+              ),
             ],
           ),
         ),

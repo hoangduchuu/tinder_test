@@ -29,6 +29,7 @@ class HomeController extends GetxController {
   late CardController cardController;
 
   final RxDouble cardHorizonAlignX = 0.0.obs;
+  final RxDouble cardVerticalAlignY = 0.0.obs;
 
   @override
   void onInit() {
@@ -124,6 +125,12 @@ class HomeController extends GetxController {
         });
         break;
       case ActionButtonType.superLike:
+      // enable like-tag then trigger after that
+        cardVerticalAlignY.value = -100;
+        Future.delayed(const Duration(milliseconds: 500), () {
+          cardController.triggerUp();
+          resetHorizonCardAlign();
+        });
         break;
       case ActionButtonType.like:
         // enable like-tag then trigger after that
@@ -163,11 +170,15 @@ class HomeController extends GetxController {
 //region handle card swiping
   void onAlignChange(Alignment align) {
     cardHorizonAlignX.value = align.x;
+    cardVerticalAlignY.value = align.y;
   }
 
   void resetHorizonCardAlign() {
     cardHorizonAlignX.value = 0;
+    cardVerticalAlignY.value = 0;
   }
+
+
 
 //endregion
 }
