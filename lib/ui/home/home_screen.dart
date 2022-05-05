@@ -35,13 +35,13 @@ class HomeScreen extends StatelessWidget {
                       onPressed: () {
                         controller.ignore(item);
                       },
-                      child: Text('Like'),
+                      child: Text('Ignore'),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         controller.like(item);
                       },
-                      child: Text('DisLike'),
+                      child: Text('Like'),
                     )
                   ],
                 );

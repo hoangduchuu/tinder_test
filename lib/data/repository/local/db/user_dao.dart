@@ -23,6 +23,6 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
   }
 
   Stream<List<UserTableData>> allIgnored() {
-    return (select(userTable)..where((bp) => bp.status.equals('like'))).watch();
+    return (select(userTable)..where((bp) => bp.status.equals('ignore'))).watch();
   }
 }

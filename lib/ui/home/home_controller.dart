@@ -26,6 +26,9 @@ class HomeController extends GetxController {
       if(value.users?.isNotEmpty == true){
         print('user: ${value.users.toString()}');
         users.value = value.users!;
+      }else{
+        print('empty: ${value.users.toString()}');
+
       }
     });
 

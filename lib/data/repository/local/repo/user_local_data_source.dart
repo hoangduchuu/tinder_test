@@ -17,7 +17,7 @@ class UserCacheRepo {
   }
 
   Future<dynamic> ignore(UserModel userModel) async {
-    return _appDatabase.userDao.like(userModel.toTable());
+    return _appDatabase.userDao.ignore(userModel.toTable());
   }
 
   Stream<List<UserModel>> getLiked() {
