@@ -116,12 +116,22 @@ class HomeController extends GetxController {
       case ActionButtonType.back:
         break;
       case ActionButtonType.dislike:
-        cardController.triggerLeft();
+        // enable like-tag then trigger after that
+        cardHorizonAlignX.value = -15;
+        Future.delayed(const Duration(milliseconds: 500), () {
+          cardController.triggerLeft();
+          resetHorizonCardAlign();
+        });
         break;
       case ActionButtonType.superLike:
         break;
       case ActionButtonType.like:
-        cardController.triggerRight();
+        // enable like-tag then trigger after that
+        cardHorizonAlignX.value = 15;
+        Future.delayed(const Duration(milliseconds: 500), () {
+          cardController.triggerRight();
+          resetHorizonCardAlign();
+        });
         break;
       case ActionButtonType.speedUp:
         break;
