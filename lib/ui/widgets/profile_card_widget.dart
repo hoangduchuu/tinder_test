@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:m_tinder/domain/model/model.dart';
+import 'package:m_tinder/route.dart';
+
+import '../screen/user_detail/user_bindings.dart';
+import '../screen/user_detail/user_detail_screen.dart';
 
 class ProfileCardWidget extends StatelessWidget {
   const ProfileCardWidget({
@@ -117,7 +121,7 @@ class ProfileCardWidget extends StatelessWidget {
                             width: context.width * 0.2,
                             child: InkWell(
                               onTap: () {
-                                // controller.openUserDetailScreen(controller.users[index]);
+                                AppNavigator.openUserDetail(_user);
                               },
                               child: const Center(
                                 child: Icon(
