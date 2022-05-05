@@ -54,7 +54,18 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                kDebugMode ? Obx(() => Text('${controller.users.length}')) : Container()
+                !kDebugMode
+                    ? Obx(
+                        () => SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: Center(child: Text('${controller.users.length}')),
+                        ),
+                      )
+                    : const SizedBox(
+                        height: 50,
+                        width: 50,
+                      )
               ],
             ),
           ),
