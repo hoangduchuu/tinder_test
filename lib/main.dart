@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
       initialRoute: Routes.home,
       getPages: routes,
       initialBinding: MainBinding(),
