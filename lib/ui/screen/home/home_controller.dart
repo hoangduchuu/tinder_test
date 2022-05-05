@@ -133,10 +133,14 @@ class HomeController extends GetxController {
       String status = value['status'];
 
       if (status.toString() == 'like') {
-        cardController.triggerRight();
+       Future.delayed(const Duration(milliseconds: 200),(){
+         cardController.triggerRight();
+       });
       }
       if (status.toString() == 'ignore') {
-        cardController.triggerLeft();
+        Future.delayed(const Duration(milliseconds: 200),(){
+          cardController.triggerLeft();
+        });
       }
     });
   }

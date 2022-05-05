@@ -25,11 +25,14 @@ class ProfileCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         child: Stack(
           children: [
-            Container(
-              width: context.width,
-              height: context.height,
-              decoration: BoxDecoration(
-                image: DecorationImage(image: NetworkImage('${_user.picture}'), fit: BoxFit.cover),
+            Hero(
+              tag: '${_user.id}',
+              child: Container(
+                width: context.width,
+                height: context.height,
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: NetworkImage('${_user.picture}'), fit: BoxFit.cover),
+                ),
               ),
             ),
             Container(

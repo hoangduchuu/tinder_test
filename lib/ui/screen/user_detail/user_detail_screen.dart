@@ -12,24 +12,27 @@ class UserDetailScreen extends GetView<UserController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox(
-            height: Get.height,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  buildImageWidget(context),
-                  buildUserInfo(context),
-                  const SizedBox(width: 100,height: 100,)
-                ],
+    return Hero(
+      tag: '${user.id}',
+      child: Scaffold(
+        body: Stack(
+          children: [
+            SizedBox(
+              height: Get.height,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    buildImageWidget(context),
+                    buildUserInfo(context),
+                    const SizedBox(width: 100,height: 100,)
+                  ],
+                ),
               ),
             ),
-          ),
-          getActionButtons(),
-        ],
+            getActionButtons(),
+          ],
+        ),
       ),
     );
   }
@@ -39,14 +42,11 @@ class UserDetailScreen extends GetView<UserController> {
       children: [
         Column(
           children: [
-            Hero(
-              tag: "userImage",
-              child: Container(
-                height: context.height * 0.7,
-                width: context.width,
-                decoration: BoxDecoration(
-                  image: DecorationImage(image: NetworkImage('${user.picture}'), fit: BoxFit.cover),
-                ),
+            Container(
+              height: context.height * 0.7,
+              width: context.width,
+              decoration: BoxDecoration(
+                image: DecorationImage(image: NetworkImage('${user.picture}'), fit: BoxFit.cover),
               ),
             ),
             Container(
