@@ -97,7 +97,7 @@ class TinderSwapCard extends StatefulWidget {
           _cardAligns.add(
             Alignment(
               0.0,
-              (0.5 / (_stackNum - 1)) * (stackNum - i),
+              (0.5 / (_stackNum + 1)) * (stackNum - i),
             ),
           );
           break;
