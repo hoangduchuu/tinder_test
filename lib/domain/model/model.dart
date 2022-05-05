@@ -41,6 +41,7 @@ class UserModel {
       firstName: '$firstName',
       status: '$status',
       title: '$title',
+      picture: picture
     );
   }
 }

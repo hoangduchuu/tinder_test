@@ -15,6 +15,8 @@ class UserTable extends Table {
 
   TextColumn? get status => text().withLength(min: 1, max: 50).nullable()();
 
+  TextColumn? get picture => text().withLength(min: 1, max: 200).nullable()();
+
   DateTimeColumn? get syncDate => dateTime().nullable()();
 
   @override
@@ -31,6 +33,7 @@ class UserTableMapper extends BaseDTOMapper<UserTableData, UserModel> {
       lastName: entity.lastName,
       status: entity.status,
       syncDate: entity.syncDate,
+      picture: entity.picture
     );
   }
 
@@ -43,6 +46,7 @@ class UserTableMapper extends BaseDTOMapper<UserTableData, UserModel> {
       lastName: dto.lastName,
       status: dto.status,
       syncDate: dto.syncDate,
+      picture: dto.picture
     );
   }
 }
