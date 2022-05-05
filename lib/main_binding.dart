@@ -8,8 +8,9 @@ import 'data/repository/local/repo/user_local_data_source.dart';
 class MainBinding extends Bindings {
   @override
   Future<void> dependencies() async {
-    final instance =  AppDatabase();
-    Get.put(instance);
+
+
+    Get.lazyPut<AppDatabase>(() => AppDatabase(), fenix: true);
 
     Get.put<UserCacheRepo>(UserCacheRepo(), permanent: true);
 
