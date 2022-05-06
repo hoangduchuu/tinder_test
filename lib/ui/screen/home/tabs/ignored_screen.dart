@@ -20,7 +20,7 @@ class IgnoredScreen extends GetView<HomeController> {
           ),
           itemCount: controller.ignoredUsers.length,
           itemBuilder: (BuildContext ctx, index) {
-            var _user = controller.likedUsers[index];
+            var _user = controller.ignoredUsers[index];
             return CardWidget(
               user: _user,
             );

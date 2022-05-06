@@ -15,7 +15,7 @@ class UserController extends GetxController {
   }
 
   void like(UserModel user) {
-    _repo.ignore(user).then((value) {
+    _repo.like(user).then((value) {
       Get.back(result: {'status': 'like'});
     });
   }
