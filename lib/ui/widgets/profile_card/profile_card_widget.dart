@@ -41,6 +41,7 @@ class ProfileCardWidget extends StatelessWidget {
               },
               child: Stack(
                 children: [
+                  //region avatar & gallery
                   Column(
                     children: [
                       Expanded(
@@ -76,7 +77,10 @@ class ProfileCardWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
+                  //endregion
+
+                  //region indicator
+                  Visibility(child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: getMockAvatar('${_user.picture}').asMap().entries.map((entry) {
@@ -87,14 +91,17 @@ class ProfileCardWidget extends StatelessWidget {
                             margin: const EdgeInsets.only(left: 2, top: 6, right: 2),
                             height: 8.0,
                             decoration: BoxDecoration(
-                                // ignore: unrelated_type_equality_checks
+                              // ignore: unrelated_type_equality_checks
                                 color:
-                                    ((isFirstLayer && c.currentSliderPage == entry.key) ? Colors.white : Colors.grey)),
+                                ((isFirstLayer && c.currentSliderPage == entry.key) ? Colors.white : Colors.grey)),
                           ),
                         ),
                       );
                     }).toList(),
-                  ),
+                  ),visible: isFirstLayer,),
+                  //endregion
+
+                  //region profile info
                   Container(
                     width: context.width,
                     height: context.height,
@@ -204,6 +211,9 @@ class ProfileCardWidget extends StatelessWidget {
                       ],
                     ),
                   ),
+                  //endregion
+
+                  //region reaction tags
                   Visibility(
                     visible: isFirstLayer && controller.cardHorizonAlignX > 1,
                     child: Positioned(
@@ -229,6 +239,7 @@ class ProfileCardWidget extends StatelessWidget {
                       child: VeryLike(align: 111),
                     ),
                   ),
+                  //endregion
                 ],
               ),
             ),

@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       enableLog: false,
-      defaultTransition: Transition.fade,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
