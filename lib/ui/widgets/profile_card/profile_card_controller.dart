@@ -11,12 +11,6 @@ class ProfileCardController extends GetxController {
     carouselController = CarouselController();
     super.onInit();
   }
-  
-  void getUserProfile(String userId){
-    UserRepo _r = Get.find();
-    _r.getUserDetail(userId).then((value){
-    });
-  }
 
   void onNext() {
     carouselController.nextPage();

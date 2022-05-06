@@ -147,8 +147,8 @@ class UserDetailScreen extends GetView<UserController> {
               const SizedBox(
                 width: 10,
               ),
-              const Text(
-                '25yrs',
+               Text(
+                '${user.getAge()}',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -177,7 +177,7 @@ class UserDetailScreen extends GetView<UserController> {
           const SizedBox(height: 15),
           Row(
             children: List.generate(
-              2,
+              1,
               (indexLikes) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),

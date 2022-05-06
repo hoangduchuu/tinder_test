@@ -15,6 +15,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut<UserCacheRepo>(() => UserCacheRepo());
 
     Get.lazyPut<HomeController>(() => HomeController(Get.find()));
+    Get.lazyPut<ProfileCardController>(() => ProfileCardController());
 
   }
 }

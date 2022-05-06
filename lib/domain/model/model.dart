@@ -33,6 +33,14 @@ class UserModel {
     return json;
   }
 
+  String getAge() {
+    try {
+      return '${DateTime.now().year.toInt() - DateTime.parse('${dateOfBirth}').year.toInt()}';
+    } catch (e) {
+      return '';
+    }
+  }
+
   @override
   String toString() {
     return 'UserModel{id: $id, title: $title, firstName: $firstName, lastName: $lastName, picture: $picture, status: $status, dateOfBirth: $dateOfBirth, syncDate: $syncDate}';

@@ -45,6 +45,7 @@ class HomeController extends GetxController {
       _userPayload = value;
       if (value.users?.isNotEmpty == true) {
         users.value = value.users!;
+        updateAgeToModel(users);
       }
     });
 
@@ -100,12 +101,24 @@ class HomeController extends GetxController {
             List<UserModel> temp = users.value;
             temp.addAll(value.users!);
             users.value = temp;
+
+            updateAgeToModel(value.users);
           } else {
             // show out of data here
           }
         });
       }
     }
+  }
+
+  /// Call the API to get detail, then update date of birth field in to the model
+  void updateAgeToModel(List<UserModel>? models) {
+    if(models == null || models.isEmpty) return;
+    models.forEach((element) {
+      _repo.getUserDetail('${element.id}').then((value) {
+        users[users.indexWhere((element) => element.id == value.id)].dateOfBirth = value.dateOfBirth;
+      });
+    });
   }
 
   //endregion
