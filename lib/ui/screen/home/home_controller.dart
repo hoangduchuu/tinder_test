@@ -113,7 +113,7 @@ class HomeController extends GetxController {
 
   /// Call the API to get detail, then update date of birth field in to the model
   void updateAgeToModel(List<UserModel>? models) {
-    if(models == null || models.isEmpty) return;
+    if (models == null || models.isEmpty) return;
     models.forEach((element) {
       _repo.getUserDetail('${element.id}').then((value) {
         users[users.indexWhere((element) => element.id == value.id)].dateOfBirth = value.dateOfBirth;
@@ -129,33 +129,46 @@ class HomeController extends GetxController {
       case ActionButtonType.back:
         break;
       case ActionButtonType.dislike:
-        // enable like-tag then trigger after that
-        cardHorizonAlignX.value = -15;
-        Future.delayed(const Duration(milliseconds: 500), () {
-          cardController.triggerLeft();
-          resetHorizonCardAlign();
-        });
+        _handleDislikePress();
         break;
       case ActionButtonType.superLike:
-        // enable like-tag then trigger after that
-        cardVerticalAlignY.value = -100;
-        Future.delayed(const Duration(milliseconds: 500), () {
-          cardController.triggerUp();
-          resetHorizonCardAlign();
-        });
+        _handleSupperLikePress();
         break;
       case ActionButtonType.like:
-        // enable like-tag then trigger after that
-        cardHorizonAlignX.value = 15;
-        Future.delayed(const Duration(milliseconds: 500), () {
-          cardController.triggerRight();
-          resetHorizonCardAlign();
-        });
+        _handleLikePress();
         break;
       case ActionButtonType.speedUp:
         break;
     }
   }
+
+  // enable like-tag then trigger after that
+  void _handleLikePress() {
+    cardHorizonAlignX.value = 15;
+    Future.delayed(const Duration(milliseconds: 500), () {
+      cardController.triggerRight();
+      resetHorizonCardAlign();
+    });
+  }
+
+  void _handleSupperLikePress() {
+    cardVerticalAlignY.value = -100;
+    Future.delayed(const Duration(milliseconds: 500), () {
+      cardController.triggerUp();
+      resetHorizonCardAlign();
+    });
+  }
+
+  void _handleDislikePress() {
+    // enable like-tag then trigger after that
+    cardHorizonAlignX.value = -15;
+    Future.delayed(const Duration(milliseconds: 500), () {
+      cardController.triggerLeft();
+      resetHorizonCardAlign();
+    });
+  }
+
+  // endregion
 
   void goToDetailScreen(UserModel mUser) {
     AppNavigator.openUserDetail(mUser)?.then((value) {
@@ -165,21 +178,15 @@ class HomeController extends GetxController {
       String status = value['status'];
 
       if (status.toString() == 'like') {
-        Future.delayed(const Duration(milliseconds: 200), () {
-          cardController.triggerRight();
-        });
+        _handleLikePress();
       }
       if (status.toString() == 'ignore') {
-        Future.delayed(const Duration(milliseconds: 200), () {
-          cardController.triggerLeft();
-        });
+        _handleDislikePress();
       }
     });
   }
 
-//endregion
-
-//region handle card swiping
+  //region handle card swiping
   void onAlignChange(double x, double y) {
     cardHorizonAlignX.value = x;
     cardVerticalAlignY.value = y;
