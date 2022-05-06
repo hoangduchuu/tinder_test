@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
+import 'package:m_tinder/domain/repo/user_repo.dart';
 
 class ProfileCardController extends GetxController {
   RxInt currentSliderPage = 0.obs;
@@ -9,6 +10,12 @@ class ProfileCardController extends GetxController {
   void onInit() {
     carouselController = CarouselController();
     super.onInit();
+  }
+  
+  void getUserProfile(String userId){
+    UserRepo _r = Get.find();
+    _r.getUserDetail(userId).then((value){
+    });
   }
 
   void onNext() {

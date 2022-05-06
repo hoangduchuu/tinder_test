@@ -7,6 +7,13 @@ class UserController extends GetxController {
   final UserRepo _repo;
 
   UserController(this._repo);
+  
+  @override
+  void onInit() {
+    _repo.getUserDetail('60d0fe4f5311236168a109de').then((value) {
+    });
+    super.onInit();
+  }
 
   void dislike(UserModel user) {
     _repo.ignore(user).then((value) {

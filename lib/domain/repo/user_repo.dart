@@ -7,6 +7,8 @@ abstract class UserRepo {
 
   Future<UserPayload> getUserPayload(int currentPage);
 
+  Future<UserModel> getUserDetail(String userId);
+
   Stream<List<UserModel>> getLikedUsers();
 
   Stream<List<UserModel>> getIgnoreUsers();

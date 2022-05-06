@@ -4,7 +4,6 @@ import 'package:m_tinder/data/repository/local/db/table/user_table.dart';
 
 import '../../../../domain/model/model.dart';
 
-
 class UserCacheRepo {
   final AppDatabase _appDatabase = Get.find<AppDatabase>();
 
@@ -26,5 +25,14 @@ class UserCacheRepo {
 
   Stream<List<UserModel>> getIgnored() {
     return _appDatabase.userDao.allIgnored().map((event) => UserTableMapper().mapToEntities(event));
+  }
+
+  Future<dynamic> saveUer(UserTableData table) {
+    return _appDatabase.userDao.updateUser(table);
+  }
+
+  Future<UserModel> getUserById(String userId) async {
+    var result = await _appDatabase.userDao.getUserById(userId);
+    return UserTableMapper().mapToEntity(result);
   }
 }

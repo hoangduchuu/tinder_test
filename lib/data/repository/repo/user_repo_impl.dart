@@ -39,4 +39,22 @@ class UserRepositoryImpl implements UserRepo {
   Stream<List<UserModel>> getLikedUsers() {
     return _cacheRepo.getLiked();
   }
+
+  @override
+  Future<UserModel> getUserDetail(String userId) async {
+    try {
+      var localData = await _cacheRepo.getUserById(userId);
+      if (localData.dateOfBirth != null && localData.dateOfBirth.isBlank != true) {
+        return localData;
+      } else {
+        var result = await _remoteRepo.getUserDetail(userId);
+        _cacheRepo.saveUer(result.toTable());
+        return result;
+      }
+    } catch (e) {
+      var result = await _remoteRepo.getUserDetail(userId);
+      _cacheRepo.saveUer(result.toTable());
+      return result;
+    }
+  }
 }

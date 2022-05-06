@@ -16,7 +16,5 @@ class HomeBinding extends Bindings {
 
     Get.lazyPut<HomeController>(() => HomeController(Get.find()));
 
-    // Get.put<ProfileCardController>(ProfileCardController(),permanent: true);
-    Get.lazyPut<ProfileCardController>(() => ProfileCardController());
   }
 }

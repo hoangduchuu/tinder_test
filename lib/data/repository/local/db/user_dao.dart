@@ -13,6 +13,14 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
     return into(userTable).insert(user.copyWith(status: 'like'), mode: InsertMode.insertOrReplace);
   }
 
+  Future updateUser(UserTableData user) {
+    return into(userTable).insert(user.copyWith(dateOfbirth: user.dateOfbirth), mode: InsertMode.insertOrReplace);
+  }
+
+  Future<UserTableData> getUserById(String userId) {
+    return (select(userTable)..where((l) => l.id.equals(userId))).getSingle();
+  }
+
   Future ignore(UserTableData user) =>
       into(userTable).insert(user.copyWith(status: 'ignore'), mode: InsertMode.insertOrReplace);
 

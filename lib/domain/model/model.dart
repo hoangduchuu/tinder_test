@@ -7,9 +7,11 @@ class UserModel {
   String? lastName;
   String? picture;
   String? status;
+  String? dateOfBirth;
   DateTime? syncDate;
 
-  UserModel({this.id, this.title, this.firstName, this.lastName, this.picture, this.syncDate, this.status});
+  UserModel(
+      {this.id, this.title, this.firstName, this.lastName, this.picture, this.syncDate, this.status, this.dateOfBirth});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'] as String?;
@@ -17,6 +19,7 @@ class UserModel {
     firstName = json['firstName'] as String?;
     lastName = json['lastName'] as String?;
     picture = json['picture'] as String?;
+    dateOfBirth = json['dateOfBirth'] as String?;
   }
 
   Map<String, dynamic> toJson() {
@@ -26,22 +29,23 @@ class UserModel {
     json['firstName'] = firstName;
     json['lastName'] = lastName;
     json['picture'] = picture;
+    dateOfBirth = json['dateOfBirth'] as String?;
     return json;
   }
 
   @override
   String toString() {
-    return 'UserModel{id: $id, title: $title, firstName: $firstName, lastName: $lastName, picture: $picture}';
+    return 'UserModel{id: $id, title: $title, firstName: $firstName, lastName: $lastName, picture: $picture, status: $status, dateOfBirth: $dateOfBirth, syncDate: $syncDate}';
   }
 
   UserTableData toTable() {
     return UserTableData(
-      id: '$id',
-      lastName: '$lastName',
-      firstName: '$firstName',
-      status: '$status',
-      title: '$title',
-      picture: picture
-    );
+        id: '$id',
+        lastName: '$lastName',
+        firstName: '$firstName',
+        status: '$status',
+        title: '$title',
+        picture: picture,
+        dateOfbirth: dateOfBirth);
   }
 }

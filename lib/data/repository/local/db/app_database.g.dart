@@ -14,6 +14,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
   final String? lastName;
   final String? status;
   final String? picture;
+  final String? dateOfbirth;
   final DateTime? syncDate;
   UserTableData(
       {this.id,
@@ -22,6 +23,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
       this.lastName,
       this.status,
       this.picture,
+      this.dateOfbirth,
       this.syncDate});
   factory UserTableData.fromData(
       Map<String, dynamic> data, GeneratedDatabase db,
@@ -40,6 +42,8 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
           .mapFromDatabaseResponse(data['${effectivePrefix}status']),
       picture: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}picture']),
+      dateOfbirth: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}date_ofbirth']),
       syncDate: const DateTimeType()
           .mapFromDatabaseResponse(data['${effectivePrefix}sync_date']),
     );
@@ -65,6 +69,9 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
     if (!nullToAbsent || picture != null) {
       map['picture'] = Variable<String?>(picture);
     }
+    if (!nullToAbsent || dateOfbirth != null) {
+      map['date_ofbirth'] = Variable<String?>(dateOfbirth);
+    }
     if (!nullToAbsent || syncDate != null) {
       map['sync_date'] = Variable<DateTime?>(syncDate);
     }
@@ -87,6 +94,9 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
       picture: picture == null && nullToAbsent
           ? const Value.absent()
           : Value(picture),
+      dateOfbirth: dateOfbirth == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dateOfbirth),
       syncDate: syncDate == null && nullToAbsent
           ? const Value.absent()
           : Value(syncDate),
@@ -103,6 +113,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
       lastName: serializer.fromJson<String?>(json['lastName']),
       status: serializer.fromJson<String?>(json['status']),
       picture: serializer.fromJson<String?>(json['picture']),
+      dateOfbirth: serializer.fromJson<String?>(json['dateOfbirth']),
       syncDate: serializer.fromJson<DateTime?>(json['syncDate']),
     );
   }
@@ -116,6 +127,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
       'lastName': serializer.toJson<String?>(lastName),
       'status': serializer.toJson<String?>(status),
       'picture': serializer.toJson<String?>(picture),
+      'dateOfbirth': serializer.toJson<String?>(dateOfbirth),
       'syncDate': serializer.toJson<DateTime?>(syncDate),
     };
   }
@@ -127,6 +139,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
           String? lastName,
           String? status,
           String? picture,
+          String? dateOfbirth,
           DateTime? syncDate}) =>
       UserTableData(
         id: id ?? this.id,
@@ -135,6 +148,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
         lastName: lastName ?? this.lastName,
         status: status ?? this.status,
         picture: picture ?? this.picture,
+        dateOfbirth: dateOfbirth ?? this.dateOfbirth,
         syncDate: syncDate ?? this.syncDate,
       );
   @override
@@ -146,14 +160,15 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
           ..write('lastName: $lastName, ')
           ..write('status: $status, ')
           ..write('picture: $picture, ')
+          ..write('dateOfbirth: $dateOfbirth, ')
           ..write('syncDate: $syncDate')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, title, firstName, lastName, status, picture, syncDate);
+  int get hashCode => Object.hash(
+      id, title, firstName, lastName, status, picture, dateOfbirth, syncDate);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -164,6 +179,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
           other.lastName == this.lastName &&
           other.status == this.status &&
           other.picture == this.picture &&
+          other.dateOfbirth == this.dateOfbirth &&
           other.syncDate == this.syncDate);
 }
 
@@ -174,6 +190,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
   final Value<String?> lastName;
   final Value<String?> status;
   final Value<String?> picture;
+  final Value<String?> dateOfbirth;
   final Value<DateTime?> syncDate;
   const UserTableCompanion({
     this.id = const Value.absent(),
@@ -182,6 +199,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
     this.lastName = const Value.absent(),
     this.status = const Value.absent(),
     this.picture = const Value.absent(),
+    this.dateOfbirth = const Value.absent(),
     this.syncDate = const Value.absent(),
   });
   UserTableCompanion.insert({
@@ -191,6 +209,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
     this.lastName = const Value.absent(),
     this.status = const Value.absent(),
     this.picture = const Value.absent(),
+    this.dateOfbirth = const Value.absent(),
     this.syncDate = const Value.absent(),
   });
   static Insertable<UserTableData> custom({
@@ -200,6 +219,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
     Expression<String?>? lastName,
     Expression<String?>? status,
     Expression<String?>? picture,
+    Expression<String?>? dateOfbirth,
     Expression<DateTime?>? syncDate,
   }) {
     return RawValuesInsertable({
@@ -209,6 +229,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
       if (lastName != null) 'last_name': lastName,
       if (status != null) 'status': status,
       if (picture != null) 'picture': picture,
+      if (dateOfbirth != null) 'date_ofbirth': dateOfbirth,
       if (syncDate != null) 'sync_date': syncDate,
     });
   }
@@ -220,6 +241,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
       Value<String?>? lastName,
       Value<String?>? status,
       Value<String?>? picture,
+      Value<String?>? dateOfbirth,
       Value<DateTime?>? syncDate}) {
     return UserTableCompanion(
       id: id ?? this.id,
@@ -228,6 +250,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
       lastName: lastName ?? this.lastName,
       status: status ?? this.status,
       picture: picture ?? this.picture,
+      dateOfbirth: dateOfbirth ?? this.dateOfbirth,
       syncDate: syncDate ?? this.syncDate,
     );
   }
@@ -253,6 +276,9 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
     if (picture.present) {
       map['picture'] = Variable<String?>(picture.value);
     }
+    if (dateOfbirth.present) {
+      map['date_ofbirth'] = Variable<String?>(dateOfbirth.value);
+    }
     if (syncDate.present) {
       map['sync_date'] = Variable<DateTime?>(syncDate.value);
     }
@@ -268,6 +294,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
           ..write('lastName: $lastName, ')
           ..write('status: $status, ')
           ..write('picture: $picture, ')
+          ..write('dateOfbirth: $dateOfbirth, ')
           ..write('syncDate: $syncDate')
           ..write(')'))
         .toString();
@@ -328,6 +355,15 @@ class $UserTableTable extends UserTable
           GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 200),
       type: const StringType(),
       requiredDuringInsert: false);
+  final VerificationMeta _dateOfbirthMeta =
+      const VerificationMeta('dateOfbirth');
+  @override
+  late final GeneratedColumn<String?> dateOfbirth = GeneratedColumn<String?>(
+      'date_ofbirth', aliasedName, true,
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 200),
+      type: const StringType(),
+      requiredDuringInsert: false);
   final VerificationMeta _syncDateMeta = const VerificationMeta('syncDate');
   @override
   late final GeneratedColumn<DateTime?> syncDate = GeneratedColumn<DateTime?>(
@@ -335,7 +371,7 @@ class $UserTableTable extends UserTable
       type: const IntType(), requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, title, firstName, lastName, status, picture, syncDate];
+      [id, title, firstName, lastName, status, picture, dateOfbirth, syncDate];
   @override
   String get aliasedName => _alias ?? 'user_table';
   @override
@@ -367,6 +403,12 @@ class $UserTableTable extends UserTable
     if (data.containsKey('picture')) {
       context.handle(_pictureMeta,
           picture.isAcceptableOrUnknown(data['picture']!, _pictureMeta));
+    }
+    if (data.containsKey('date_ofbirth')) {
+      context.handle(
+          _dateOfbirthMeta,
+          dateOfbirth.isAcceptableOrUnknown(
+              data['date_ofbirth']!, _dateOfbirthMeta));
     }
     if (data.containsKey('sync_date')) {
       context.handle(_syncDateMeta,

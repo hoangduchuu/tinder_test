@@ -14,4 +14,9 @@ class UserRemoteRepo {
     var response = await dio.get('https://dummyapi.io/data/v1/user?limit=10&page=$curentPage');
     return UserPayload.fromJson(response.data);
   }
+
+  Future<UserModel> getUserDetail(String userId) async {
+    var response = await dio.get('https://dummyapi.io/data/v1/user/$userId');
+    return UserModel.fromJson(response.data);
+  }
 }

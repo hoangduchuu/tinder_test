@@ -17,6 +17,8 @@ class UserTable extends Table {
 
   TextColumn? get picture => text().withLength(min: 1, max: 200).nullable()();
 
+  TextColumn? get dateOfbirth => text().withLength(min: 1, max: 200).nullable()();
+
   DateTimeColumn? get syncDate => dateTime().nullable()();
 
   @override
@@ -27,26 +29,26 @@ class UserTableMapper extends BaseDTOMapper<UserTableData, UserModel> {
   @override
   UserTableData mapToDTO(UserModel entity) {
     return UserTableData(
-      id: entity.id,
-      title: entity.title,
-      firstName: entity.firstName,
-      lastName: entity.lastName,
-      status: entity.status,
-      syncDate: entity.syncDate,
-      picture: entity.picture
-    );
+        id: entity.id,
+        title: entity.title,
+        firstName: entity.firstName,
+        lastName: entity.lastName,
+        status: entity.status,
+        syncDate: entity.syncDate,
+        picture: entity.picture,
+        dateOfbirth: entity.dateOfBirth);
   }
 
   @override
   UserModel mapToEntity(UserTableData dto) {
     return UserModel(
-      id: dto.id,
-      title: dto.title,
-      firstName: dto.firstName,
-      lastName: dto.lastName,
-      status: dto.status,
-      syncDate: dto.syncDate,
-      picture: dto.picture
-    );
+        id: dto.id,
+        title: dto.title,
+        firstName: dto.firstName,
+        lastName: dto.lastName,
+        status: dto.status,
+        syncDate: dto.syncDate,
+        picture: dto.picture,
+        dateOfBirth: dto.dateOfbirth);
   }
 }
